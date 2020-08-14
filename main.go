@@ -60,7 +60,17 @@ func getPPPDialer(intf string) *net.Dialer {
 		}}
 }
 
+var help = `example:
+try google.com on port 80 on the ppp0 interface
+$ nettest ppp0 google.com 80
+`
+
 func main() {
+	if len(os.Args) != 4 {
+		fmt.Printf(help)
+		log.Fatalf("wrong number of arguments")
+	}
+
 	// get the relevant args
 	intf := os.Args[1]
 	destAddr := os.Args[2]
