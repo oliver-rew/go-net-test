@@ -77,7 +77,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	fmt.Printf("Successful connection with local IP '%s' on %s', to remote '%s:%s'\n", conn.LocalAddr().String(), intf, destAddr, destPort)
+	fmt.Printf("Successful connection with local IP %s on %s, to remote %s:%s\n", conn.LocalAddr().String(), intf, destAddr, destPort)
 
 	//	_, err = conn.Write([]byte("GET\n\n"))
 	fmt.Fprintf(conn, "GET / HTTP/1.0\r\n\r\n")
