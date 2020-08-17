@@ -23,7 +23,6 @@ func getDialerForInterface(intf string) (*net.Dialer, error) {
 func getGenericDialer(intf string) (*net.Dialer, error) {
 	ief, err := net.InterfaceByName(intf)
 	if err != nil {
-		log.Fatal(err)
 		return nil, fmt.Errorf("error getting '%s' interface by name: %s", intf, err)
 	}
 
@@ -89,7 +88,6 @@ func main() {
 
 	fmt.Printf("Successful connection with local IP %s on %s, to remote %s:%s\n", conn.LocalAddr().String(), intf, destAddr, destPort)
 
-	//	_, err = conn.Write([]byte("GET\n\n"))
 	fmt.Fprintf(conn, "GET / HTTP/1.0\r\n\r\n")
 
 	b, err := ioutil.ReadAll(conn)
